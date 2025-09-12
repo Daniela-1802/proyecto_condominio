@@ -1,0 +1,20 @@
+# Backend / Python / Django
+__pycache__/
+*.py[cod]
+*.sqlite3
+.venv/
+env/
+.env
+staticfiles/
+media/
+
+# Front (por si se ejecuta git desde la raíz)
+front/node_modules/
+front/dist/
+front/.vite/
+
+# IDE/OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
