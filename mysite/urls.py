@@ -16,18 +16,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-from myapp.views import home  # vista simple de prueba
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+    TokenVerifyView,
+)
+from rest_framework_simplejwt.views import TokenBlacklistView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    # Ping de prueba (pública)
-    #path("", HomeView.as_view()),
-    path('', home, name='home'),
+    path("admin/", admin.site.urls),
 
-    # Auth JWT
-    path("api/auth/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    # --- AUTH (SimpleJWT) ---
+    path("api/auth/login/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("api/auth/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    path("api/auth/verify/", TokenVerifyView.as_view(), name="token_verify"),
+    path("api/auth/logout/", TokenBlacklistView.as_view(), name="token_blacklist"),
 
-    path('api/', include('myapp.urls')),  # envía las rutas a myapp
+    # --- APP propia ---
+    path("api/", include("myapp.urls")),   # aquí cuelgan tus endpoints (usuarios, roles, etc.)
 ]
