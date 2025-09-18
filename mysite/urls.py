@@ -30,4 +30,7 @@ urlpatterns = [
     path("api/auth/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
 
     path('api/', include('myapp.urls')),  # envía las rutas a myapp
+    path("api/roles/", include("myapp.roles.urls")),
+
+    
 ]
