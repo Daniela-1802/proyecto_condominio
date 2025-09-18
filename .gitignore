@@ -7,6 +7,8 @@ env/
 .env
 staticfiles/
 media/
+venv/
+
 
 # Front (por si se ejecuta git desde la raíz)
 front/node_modules/
