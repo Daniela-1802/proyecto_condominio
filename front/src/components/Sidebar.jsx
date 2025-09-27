@@ -1,53 +1,35 @@
-import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 export default function Sidebar() {
-  const [collapsed, setCollapsed] = useState(false);
+  const link = ({ isActive }) =>
+    [
+      "nav-link d-flex align-items-center gap-2 px-3 py-2",
+      isActive
+        ? "bg-white text-primary rounded fw-semibold" // activo: pastilla blanca y texto azul
+        : "link-light",                                 // normal: enlaces claros (blancos)
+    ].join(" ");
 
   return (
-    <ul
-      className={`navbar-nav bg-gradient-primary sidebar sidebar-dark accordion ${
-        collapsed ? "toggled" : ""
-      }`}
-      id="accordionSidebar"
-      style={{ minHeight: "100vh" }}
-    >
-      {/* Brand */}
-      <a
-        className="sidebar-brand d-flex align-items-center justify-content-center"
-        href="#"
-      >
-        <div className="sidebar-brand-icon rotate-n-15">
-          <i className="fas fa-laugh-wink"></i>
-        </div>
-        <div className="sidebar-brand-text mx-3">SB Admin 2</div>
-      </a>
+    <aside className="bg-primary text-white" style={{ width: 240, minHeight: "100vh" }}>
+      <div className="p-3 fs-5">SB ADMIN 2</div>
 
-      <hr className="sidebar-divider my-0" />
-
-      {/* Items */}
-      <li className="nav-item">
-        <a className="nav-link" href="#">
-          <i className="fas fa-fw fa-tachometer-alt"></i>
+      <nav className="nav flex-column px-2">
+        <NavLink to="/dashboard" className={link}>
+          <i className="fas fa-gauge" />
           <span>Dashboard</span>
-        </a>
-      </li>
+        </NavLink>
 
-      <li className="nav-item">
-        <a className="nav-link" href="#">
-          <i className="fas fa-fw fa-table"></i>
-          <span>Tables</span>
-        </a>
-      </li>
+        <NavLink to="/usuarios" className={link}>
+          <i className="fas fa-users" />
+          <span>Usuarios</span>
+        </NavLink>
 
-      <hr className="sidebar-divider d-none d-md-block" />
-
-      {/* Toggle */}
-      <div className="text-center d-none d-md-inline">
-        <button
-          className="rounded-circle border-0"
-          onClick={() => setCollapsed(!collapsed)}
-        ></button>
-      </div>
-    </ul>
+        <NavLink to="/roles" className={link}>
+          <i className="fas fa-user-shield" />
+          <span>Roles</span>
+        </NavLink>
+      </nav>
+    </aside>
   );
 }
+

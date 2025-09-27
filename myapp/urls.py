@@ -1,5 +1,5 @@
-<<<<<<< HEAD
-from django.urls import path
+# myapp/urls.py
+from django.urls import path, include
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -9,7 +9,7 @@ from .views import (
     MeView,
     PasswordForgotView,
     PasswordResetConfirmView,
-    PasswordChangeView,          
+    PasswordChangeView,
 )
 
 urlpatterns = [
@@ -22,16 +22,9 @@ urlpatterns = [
 
     # Protegidas
     path("me/", MeView.as_view(), name="me"),
-    path("auth/password/change/", PasswordChangeView.as_view(), name="password_change"),  # 👈 NUEVO (JWT requerido)
-=======
-from django.urls import path,include
-#from .views import MeView, home   # importa las vistas de la app
+    path("auth/password/change/", PasswordChangeView.as_view(), name="password_change"),
 
-urlpatterns = [
-    #path('', views.home, name='home'),  # ruta raíz -> vista "home"
-    #path("", home, name="home"),              # /api/  -> home (opcional)
-    #path("me/", MeView.as_view(), name="me"), # /api/me/ -> requiere JWT
-    path('usuarios/', include('myapp.usuarios.urls')),
-
->>>>>>> feature/usuarios-roles
+    # Subrutas de cada dominio/caso de uso
+    path("usuarios/", include("myapp.usuarios.urls")),
+    path("roles/", include("myapp.roles.urls")),
 ]

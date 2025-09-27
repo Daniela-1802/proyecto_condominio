@@ -35,6 +35,8 @@ INSTALLED_APPS = [
 
     # Local
     "myapp",
+    'myapp.usuarios',
+    'myapp.roles',
 ]
 
 # ------------------------------------------------------------

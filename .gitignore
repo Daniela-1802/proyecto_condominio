@@ -1,21 +1,26 @@
-# Backend / Python / Django
-__pycache__/
-*.py[cod]
-*.sqlite3
-.venv/
-env/
-.env
-staticfiles/
-media/
-venv/
+# === Node / React (en cualquier carpeta) ===
+node_modules/
+**/node_modules/
+dist/
+build/
 
-
-# Front (por si se ejecuta git desde la raíz)
+# Front específico
 front/node_modules/
 front/dist/
 front/.vite/
 
-# IDE/OS
+# === Python / Django ===
+__pycache__/
+*.py[cod]
+*.sqlite3
+.venv/
+venv/
+env/
+.env
+staticfiles/
+media/
+
+# === IDE / OS ===
 .vscode/
 .idea/
 .DS_Store
